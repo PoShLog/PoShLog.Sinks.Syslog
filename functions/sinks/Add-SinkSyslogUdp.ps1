@@ -1,4 +1,4 @@
-function Add-SinkSyslog {
+function Add-SinkSyslogUdp {
 	<#
 	.SYNOPSIS
 		Writes log events to syslog server
@@ -25,25 +25,32 @@ function Add-SinkSyslog {
 	.OUTPUTS
 		LoggerConfiguration object allowing method chaining
 	.EXAMPLE
-		PS> Add-SinkSyslog -Hostname 'syslogServer1'
+		PS> Add-SinkSyslogUdp -Hostname 'syslogServer1'
 	#>
 
 	[Cmdletbinding()]
 	param(
 		[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
 		[Serilog.LoggerConfiguration]$LoggerConfig,
+
 		[Parameter(Mandatory = $true)]
 		[string]$Hostname,
+
 		[Parameter(Mandatory = $false)]
 		[int]$Port = 514,
+
 		[Parameter(Mandatory = $false)]
 		[string]$AppName = $null,
+
 		[Parameter(Mandatory = $false)]
 		[Serilog.Sinks.Syslog.SyslogFormat]$Format = [Serilog.Sinks.Syslog.SyslogFormat]::RFC3164,
+
 		[Parameter(Mandatory = $false)]
 		[Serilog.Sinks.Syslog.Facility]$Facility = [Serilog.Sinks.Syslog.Facility]::Local0,
+
 		[Parameter(Mandatory = $false)]
 		[string]$OutputTemplate = '{Message}{NewLine}{Exception}{ErrorRecord}',
+
 		[Parameter(Mandatory = $false)]
 		[Serilog.Events.LogEventLevel]$RestrictedToMinimumLevel = [Serilog.Events.LogEventLevel]::Verbose
 	)
