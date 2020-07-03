@@ -18,17 +18,31 @@ Install-Module PoShLog.Sinks.Syslog
 
 ## Usage
 
-This starts UPD syslog logger. You can change the RFC format, port number or other things trough the optional parameters.
+This starts UPD syslog logger. You can change the RFC format, port number or other things trough the optional parameters:
 
 ```ps1
 Import-Module PoShLog
 Import-Module PoShLog.Sinks.Syslog
 
 New-Logger |
-	Add-SinkSyslog -Hostname '192.168.0.48' |
+	Add-SinkSyslogUdp -Hostname '192.168.0.48' |
 	Start-Logger
 
-Write-InformationLog 'My message in syslog'
+Write-InformationLog 'My message in UDP syslog'
+
+Close-Logger
+```
+The TCP syslog logger is automatically configured to use TLS 1.2. If you want no TLS or another protocol you got to change it:
+
+```ps1
+Import-Module PoShLog
+Import-Module PoShLog.Sinks.Syslog
+
+New-Logger |
+	Add-SinkSyslogTcp -Hostname '192.168.0.48' -SecureProtocols None |
+	Start-Logger
+
+Write-InformationLog 'My message in insecure TCP syslog'
 
 Close-Logger
 ```
