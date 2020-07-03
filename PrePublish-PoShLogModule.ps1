@@ -46,4 +46,4 @@ if (Test-Path $PublishFolder) {
 New-Item -Path $PublishFolder -ItemType Directory -Force | Out-Null
 
 # Filter module files and move them to publish folder
-Get-ChildItem $ModuleDirectory | Where-Object { $excludedItems -notcontains $_.Name } | Select-Object -ExpandProperty FullName | Copy-Item -Destination $PublishFolder -Recurse -Force
+Get-ChildItem $ModuleDirectory | Where-Object { $excludedItems -notcontains $_.Name -and $_.Name -ne 'publish' } | Select-Object -ExpandProperty FullName | Copy-Item -Destination $PublishFolder -Recurse -Force

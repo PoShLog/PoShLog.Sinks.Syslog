@@ -1,0 +1,7 @@
+Dependencies.csproj
+Dependencies.sln
+.gitignore
+.gitattributes
+Build-Dependencies.ps1
+PrePublish-PoShLogModule.ps1
+.publishExclude
