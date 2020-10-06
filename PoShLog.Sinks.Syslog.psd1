@@ -31,9 +31,8 @@ Copyright = '(c) 2020 Michael Zimmerli. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PoShLog.Sinks.Syslog is an extension module for the PoShLog core library - https://www.powershellgallery.com/packages/PoShLog.
-It contains a sink that writes events to syslog servers. It is a wrapper around the .NET package "Serilog.Sinks.SyslogMessages".
+It contains a sink that writes events to syslog servers.
 
-For specific information about the syslog sink, check here - https://github.com/IonxSolutions/serilog-sinks-syslog
 For more documentation about PoShLog, check out the PoShLog wiki - https://github.com/PoShLog/PoShLog/wiki'
 
 # Minimum version of the PowerShell engine required by this module
@@ -73,7 +72,7 @@ RequiredModules = @(@{ModuleName = 'PoShLog'; GUID = '6eabf344-4f00-4cc0-95d4-d3
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Add-SinkSyslogTcp', 'Add-SinkSyslogUdp'
+FunctionsToExport = 'Add-SinkSyslogTcp', 'Add-SinkSyslogUdp', 'Add-SinkSyslogLocal'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

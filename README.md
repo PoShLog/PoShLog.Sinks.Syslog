@@ -47,6 +47,21 @@ Write-InformationLog 'My message in insecure TCP syslog'
 Close-Logger
 ```
 
+The Local syslog logger writes messages to the local syslog service. **This is only available on Linux systems.**
+
+```ps1
+Import-Module PoShLog
+Import-Module PoShLog.Sinks.Syslog
+
+New-Logger |
+	Add-SinkSyslogLocal |
+	Start-Logger
+
+Write-InformationLog 'My message in local syslog'
+
+Close-Logger
+```
+
 ### Documentation
 
 These examples are just to get you started fast. For more detailed documentation please check [wiki](https://github.com/PoShLog/PoShLog/wiki).
